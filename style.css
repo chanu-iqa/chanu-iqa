@@ -929,6 +929,9 @@ body.dark .saturn-1 {
   mix-blend-mode: screen;               /* ลบพื้นดำของภาพให้กลืนอวกาศ */
   filter: drop-shadow(0 0 50px rgba(190,160,100,.2));
   opacity: .85;                         /* ถอยไปอยู่หลังฉาก */
+  /* feather ขอบภาพให้จางหาย ไม่เห็นรอยต่อสี่เหลี่ยม */
+  -webkit-mask-image: radial-gradient(ellipse 62% 62% at 50% 50%, #000 50%, transparent 82%);
+  mask-image: radial-gradient(ellipse 62% 62% at 50% 50%, #000 50%, transparent 82%);
   transform: rotate(-17deg);            /* เอียงให้วงแหวนมีมิติ */
   animation: saturnFloat 18s ease-in-out infinite;
 }
