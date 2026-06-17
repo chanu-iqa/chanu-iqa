@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://chanu-iqa.github.io/chanu-iqa/sitemap.xml
