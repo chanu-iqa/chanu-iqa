@@ -1312,12 +1312,14 @@ a:focus-visible, button:focus-visible, .nav-link:focus-visible,
 
 /* ===== Hero tagline (SADAO Model) ===== */
 .hero-tagline {
-  display: flex; align-items: baseline; gap: 8px;
+  display: flex; align-items: flex-start; gap: 8px;
   margin: .3rem 0 1.5rem; font-size: .98rem; font-weight: 600;
   color: #ffe08a; opacity: 1 !important; letter-spacing: .01em;
   text-shadow: 0 1px 10px rgba(0,0,0,.35);
   word-break: normal; line-break: loose; text-wrap: pretty;
 }
+.hero-tagline .tagline-text { display: flex; flex-direction: column; line-height: 1.5; }
+.hero-tagline .tagline-text strong { font-weight: 800; }
 .hero-tagline i { font-size: .95rem; }
 @media (max-width: 600px){ .hero-tagline { font-size: .82rem; } }
 
