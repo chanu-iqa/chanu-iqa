@@ -2,7 +2,7 @@
 const CACHE = 'iqa-chanuman-v4';
 const CORE = ['./', 'index.html', 'style.css', 'app.js', 'assets/logo.png', 'assets/logo-3d.png', 'manifest.json'];
 // ไฟล์ใหญ่ (PDF/วิดีโอ) ไม่ต้องเก็บลงแคช — กัน storage ผู้ใช้บวม
-const SKIP_CACHE = /\.(pdf|mp4|mov|webm)$/i;
+const SKIP_CACHE = /\.(pdf|mp4|mov|webm|m4a|mp3|wav|ogg)$/i;
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
 });
