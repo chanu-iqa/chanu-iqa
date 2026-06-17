@@ -418,17 +418,31 @@ function closePdf() {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closePdf(); });
 
-// ===== Hero: ปิดวิดีโอ ใช้ภาพ poster เป็นพื้นหลัง (เบา/เร็วทั้งมือถือและคอม) =====
+// ===== วิดีโอ hero: เล่นเฉพาะเดสก์ท็อป / มือถือใช้ภาพ poster (ประหยัด ~8MB) =====
 (function () {
   const v = document.querySelector('.hero-video');
   if (!v) return;
-  const poster = v.getAttribute('poster');
-  const hero = document.querySelector('.hero-has-video');
-  v.remove();
-  if (hero && poster) {
-    hero.style.backgroundImage = `url('${poster}')`;
-    hero.style.backgroundSize = 'cover';
-    hero.style.backgroundPosition = 'center';
+  if (window.matchMedia('(min-width: 761px)').matches) {
+    // เดสก์ท็อป: ใส่ source แล้วเล่น
+    const src = v.dataset.src;
+    if (src) {
+      const s = document.createElement('source');
+      s.src = src; s.type = 'video/mp4';
+      v.appendChild(s);
+      v.preload = 'auto';
+      v.load();
+      v.play().catch(() => {});
+    }
+  } else {
+    // มือถือ: ไม่โหลดวิดีโอ ใช้ poster เป็นพื้นหลัง
+    const poster = v.getAttribute('poster');
+    const hero = document.querySelector('.hero-has-video');
+    v.remove();
+    if (hero && poster) {
+      hero.style.backgroundImage = `url('${poster}')`;
+      hero.style.backgroundSize = 'cover';
+      hero.style.backgroundPosition = 'center';
+    }
   }
 })();
 
