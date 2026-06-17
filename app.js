@@ -418,32 +418,25 @@ function closePdf() {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closePdf(); });
 
-// ===== วิดีโอ hero: เล่นเฉพาะเดสก์ท็อป / มือถือใช้ภาพ poster (ประหยัด ~8MB) =====
+// ===== วิดีโอ hero: เล่นทั้งมือถือและเดสก์ท็อป (โหลดหลังหน้าเว็บพร้อม) =====
 (function () {
   const v = document.querySelector('.hero-video');
   if (!v) return;
-  if (window.matchMedia('(min-width: 761px)').matches) {
-    // เดสก์ท็อป: ใส่ source แล้วเล่น
+  const start = () => {
+    if (v.dataset.loaded) return;
     const src = v.dataset.src;
-    if (src) {
-      const s = document.createElement('source');
-      s.src = src; s.type = 'video/mp4';
-      v.appendChild(s);
-      v.preload = 'auto';
-      v.load();
-      v.play().catch(() => {});
-    }
-  } else {
-    // มือถือ: ไม่โหลดวิดีโอ ใช้ poster เป็นพื้นหลัง
-    const poster = v.getAttribute('poster');
-    const hero = document.querySelector('.hero-has-video');
-    v.remove();
-    if (hero && poster) {
-      hero.style.backgroundImage = `url('${poster}')`;
-      hero.style.backgroundSize = 'cover';
-      hero.style.backgroundPosition = 'center';
-    }
-  }
+    if (!src) return;
+    v.dataset.loaded = '1';
+    const s = document.createElement('source');
+    s.src = src; s.type = 'video/mp4';
+    v.appendChild(s);
+    v.preload = 'auto';
+    v.load();
+    v.play().catch(() => {});
+  };
+  // โหลดวิดีโอหลังหน้าเว็บแสดงผลเสร็จ เพื่อไม่ให้ฉุดการโหลดหน้าแรก
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start);
 })();
 
 // ── STATS COUNTER ────────────────────────────────
