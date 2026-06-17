@@ -90,7 +90,7 @@ main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
   align-items: center; gap: 2rem;
   background:
     linear-gradient(135deg, rgba(15,139,139,.93) 0%, rgba(42,122,140,.9) 45%, rgba(107,70,145,.93) 100%),
-    url('assets/photos/hero.jpg') center/cover no-repeat;
+    url('assets/photos/hero.webp') center/cover no-repeat;
   border-radius: 20px; padding: 3rem 3rem 3rem 3.5rem;
   color: #fff; margin-bottom: 2rem; overflow: hidden; position: relative;
 }
@@ -924,7 +924,7 @@ body.dark .saturn-1 {
   width: 920px; height: 445px;          /* คงสัดส่วนภาพ 1000x484 */
   right: -300px; bottom: -150px;        /* เกาะมุมขวาล่าง โผล่ครึ่งดวง */
   border: none; box-shadow: none;
-  background: url('assets/saturn.jpg') center/contain no-repeat;
+  background: url('assets/saturn.webp') center/contain no-repeat;
   mix-blend-mode: screen;               /* ลบพื้นดำของภาพให้กลืนอวกาศ */
   filter: drop-shadow(0 0 50px rgba(190,160,100,.2));
   opacity: .85;                         /* ถอยไปอยู่หลังฉาก */
