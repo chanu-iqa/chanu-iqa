@@ -418,25 +418,18 @@ function closePdf() {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closePdf(); });
 
-// ===== วิดีโอ hero: เล่นทั้งมือถือและเดสก์ท็อป (โหลดหลังหน้าเว็บพร้อม) =====
+// ===== Hero: ปิดวิดีโอ ใช้ภาพ poster เป็นพื้นหลัง (เบา/เร็วทั้งมือถือและคอม) =====
 (function () {
   const v = document.querySelector('.hero-video');
   if (!v) return;
-  const start = () => {
-    if (v.dataset.loaded) return;
-    const src = v.dataset.src;
-    if (!src) return;
-    v.dataset.loaded = '1';
-    const s = document.createElement('source');
-    s.src = src; s.type = 'video/mp4';
-    v.appendChild(s);
-    v.preload = 'auto';
-    v.load();
-    v.play().catch(() => {});
-  };
-  // โหลดวิดีโอหลังหน้าเว็บแสดงผลเสร็จ เพื่อไม่ให้ฉุดการโหลดหน้าแรก
-  if (document.readyState === 'complete') start();
-  else window.addEventListener('load', start);
+  const poster = v.getAttribute('poster');
+  const hero = document.querySelector('.hero-has-video');
+  v.remove();
+  if (hero && poster) {
+    hero.style.backgroundImage = `url('${poster}')`;
+    hero.style.backgroundSize = 'cover';
+    hero.style.backgroundPosition = 'center';
+  }
 })();
 
 // ── STATS COUNTER ────────────────────────────────
