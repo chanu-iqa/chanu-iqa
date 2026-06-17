@@ -396,6 +396,28 @@ function toggleMenu() {
   if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
 }
 
+// ===== ตัวอ่าน PDF ในหน้าเว็บ (มีปุ่มปิด) =====
+function openPdf(url, title) {
+  const v = document.getElementById('pdfViewer');
+  if (!v) return;
+  document.getElementById('pdfFrame').src = url;
+  document.getElementById('pdfOpenTab').href = url;
+  document.getElementById('pdfDownload').href = url;
+  document.getElementById('pdfTitle').textContent = title || 'เอกสาร';
+  v.classList.add('open');
+  v.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+function closePdf() {
+  const v = document.getElementById('pdfViewer');
+  if (!v) return;
+  v.classList.remove('open');
+  v.setAttribute('aria-hidden', 'true');
+  document.getElementById('pdfFrame').src = '';   // หยุดโหลด/คืนหน่วยความจำ
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePdf(); });
+
 // ── STATS COUNTER ────────────────────────────────
 function animateCounters() {
   document.querySelectorAll('.stat-num').forEach(el => {
@@ -599,7 +621,7 @@ function renderDocs() {
       <div class="doc-meta"><i class="fas fa-calendar-alt"></i> ${d.date} &nbsp;·&nbsp; ${d.size}</div>
       ${d.file ? `
       <div class="doc-actions">
-        <a class="doc-download" href="${encodeURI(d.file)}" target="_blank" rel="noopener"><i class="fas fa-eye"></i> เปิดอ่าน</a>
+        <a class="doc-download" href="${encodeURI(d.file)}" target="_blank" rel="noopener" data-t="${(d.title||'').replace(/"/g,'&quot;')}" onclick="event.preventDefault();openPdf('${encodeURI(d.file)}', this.dataset.t)"><i class="fas fa-eye"></i> เปิดอ่าน</a>
         <a class="doc-download doc-download-alt" href="${encodeURI(d.file)}" download><i class="fas fa-download"></i> ดาวน์โหลด</a>
       </div>` : `
       <button class="doc-download" onclick="alert('ยังไม่ได้เชื่อมต่อไฟล์')"><i class="fas fa-download"></i> ดาวน์โหลด</button>`}
@@ -918,7 +940,7 @@ function renderAwards() {
       <div class="bp-icon"><i class="fas ${b.icon}"></i></div>
       <h4>${b.title}</h4>
       <p>${b.desc}</p>
-      ${b.pdf ? `<a class="bp-link" href="${encodeURI(b.pdf)}" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> อ่านฉบับเต็ม (PDF)</a>` : ''}
+      ${b.pdf ? `<a class="bp-link" href="${encodeURI(b.pdf)}" target="_blank" rel="noopener" data-t="${(b.title||'').replace(/"/g,'&quot;')}" onclick="event.preventDefault();openPdf('${encodeURI(b.pdf)}', this.dataset.t)"><i class="fas fa-file-pdf"></i> อ่านฉบับเต็ม (PDF)</a>` : ''}
     </div>`).join('');
 
   const ag = document.getElementById('award-grid');
@@ -935,7 +957,7 @@ function renderAwards() {
           if (typeof it === 'object' && it.cert) {
             const isPdf = /\.pdf$/i.test(it.cert);
             badge = isPdf
-              ? `<a class="cert-link" href="${encodeURI(it.cert)}" target="_blank" rel="noopener"><i class="fas fa-certificate"></i> เกียรติบัตร</a>`
+              ? `<a class="cert-link" href="${encodeURI(it.cert)}" target="_blank" rel="noopener" data-t="${text.replace(/"/g,'&quot;')}" onclick="event.preventDefault();openPdf('${encodeURI(it.cert)}', this.dataset.t)"><i class="fas fa-certificate"></i> เกียรติบัตร</a>`
               : `<span class="cert-thumb" onclick="openLightbox('${encodeURI(it.cert)}','${text.replace(/'/g, "\\'")}')"><img src="${encodeURI(it.cert)}" alt="เกียรติบัตร" loading="lazy" /></span>`;
           }
           return `<li>${text}${badge}</li>`;

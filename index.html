@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="IQA ชานุมาน" />
   <link rel="apple-touch-icon" href="assets/logo.png" />
-  <link rel="stylesheet" href="style.css?v=58" />
+  <link rel="stylesheet" href="style.css?v=59" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <!-- Structured Data (Schema.org) — ช่วยให้ Google เข้าใจว่าเป็นเว็บงานประกันคุณภาพของโรงเรียน -->
   <script type="application/ld+json">
@@ -68,7 +68,7 @@
 <!-- ===== HEADER ===== -->
 <header>
   <div class="header-inner">
-    <div class="logo-area">
+    <div class="logo-area" onclick="showSection('home', document.querySelector('.main-nav .nav-link'))" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showSection('home', document.querySelector('.main-nav .nav-link'));}" role="button" tabindex="0" aria-label="กลับหน้าหลัก" title="กลับหน้าหลัก" style="cursor:pointer">
       <div class="logo-icon"><img src="assets/logo.png" alt="ตราโรงเรียนชานุมานวิทยาคม" /></div>
       <div class="logo-text">
         <h1>งานประกันคุณภาพภายในสถานศึกษา (IQA)</h1>
@@ -459,6 +459,19 @@
   </figure>
 </div>
 
+<!-- ===== ตัวอ่าน PDF (มีปุ่มปิด) ===== -->
+<div id="pdfViewer" class="pdf-viewer" aria-hidden="true">
+  <div class="pdf-bar">
+    <span class="pdf-title" id="pdfTitle">เอกสาร</span>
+    <div class="pdf-actions">
+      <a class="pdf-act" id="pdfOpenTab" href="#" target="_blank" rel="noopener" title="เปิดในแท็บใหม่"><i class="fas fa-up-right-from-square"></i></a>
+      <a class="pdf-act" id="pdfDownload" href="#" download title="ดาวน์โหลด"><i class="fas fa-download"></i></a>
+      <button class="pdf-act pdf-close" onclick="closePdf()" aria-label="ปิด"><i class="fas fa-times"></i> ปิด</button>
+    </div>
+  </div>
+  <iframe id="pdfFrame" title="ตัวอ่านเอกสาร PDF"></iframe>
+</div>
+
 <!-- ปุ่มกลับขึ้นบน -->
 <button class="to-top" id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="กลับขึ้นบน"><i class="fas fa-arrow-up"></i></button>
 
@@ -485,6 +498,6 @@
   </div>
 </footer>
 
-<script src="app.js?v=58"></script>
+<script src="app.js?v=59"></script>
 </body>
 </html>

@@ -256,7 +256,8 @@ main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
   color: #fff; border-radius: 16px; padding: 2rem 2.5rem;
   margin-bottom: 2rem;
 }
-.page-header h2 { font-size: 1.6rem; font-weight: 800; display: flex; align-items: center; gap: .6rem; }
+.page-header h2 { font-size: 1.6rem; font-weight: 800; word-break: normal; overflow-wrap: break-word; line-break: loose; }
+.page-header h2 i { margin-right: .55rem; }
 .page-header p  { margin-top: .4rem; opacity: .88; font-size: .95rem; }
 
 /* ===== FILTER BAR ===== */
@@ -761,6 +762,8 @@ footer {
   .logo-icon { width: 42px; height: 42px; }
   .hero { padding: 2rem 1.5rem; }
   .hero-content h2 { font-size: 1.5rem; }
+  .page-header { padding: 1.5rem 1.25rem; }
+  .page-header h2 { font-size: 1.3rem; }
   .pdca-grid { grid-template-columns: 1fr; }
   .stats-bar { grid-template-columns: repeat(2,1fr); }
   .overall-card { flex-direction: column; }
@@ -1361,6 +1364,29 @@ body.dark .footer-inner strong { color: #fff; }
   paint-order: stroke; stroke: rgba(0,0,0,.35); stroke-width: .6px;
 }
 .logo3d { z-index: 1; }   /* ตราอยู่หน้า ให้วงแหวนดูโคจรรอบ */
+
+/* ===== ตัวอ่าน PDF (เต็มจอ มีปุ่มปิด) ===== */
+.pdf-viewer {
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: #1a1a1a; flex-direction: column;
+}
+.pdf-viewer.open { display: flex; }
+.pdf-bar {
+  display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+  padding: .6rem .9rem; background: #0f8b8b; color: #fff;
+  padding-top: max(.6rem, env(safe-area-inset-top));   /* กันรอยบาก iPhone */
+}
+.pdf-title { font-weight: 700; font-size: .95rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pdf-actions { display: flex; align-items: center; gap: .5rem; flex-shrink: 0; }
+.pdf-act {
+  display: inline-flex; align-items: center; gap: .35rem;
+  color: #fff; background: rgba(255,255,255,.18); border: 0;
+  padding: .5rem .7rem; border-radius: 8px; font-size: .9rem; cursor: pointer;
+  text-decoration: none;
+}
+.pdf-act:hover { background: rgba(255,255,255,.3); }
+.pdf-close { font-weight: 700; background: rgba(255,255,255,.28); }
+#pdfFrame { flex: 1; width: 100%; border: 0; background: #525659; }
 @media (prefers-reduced-motion: reduce) { .iqa-ring svg { animation: none; } body.dark::before { animation: none !important; } body.dark::after { display: none !important; } .saturn-deco { animation: none !important; } }
 /* มือถือ: ย่อวงแหวนให้พอดีจอ (ไม่ซ่อนแล้ว) */
 @media (max-width: 900px) { .iqa-ring { width: 240px; height: 240px; } }
