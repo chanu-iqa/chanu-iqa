@@ -796,6 +796,21 @@ footer {
 .to-top.show { opacity: 1; visibility: visible; transform: none; }
 .to-top:hover { background: var(--primary-dark); transform: translateY(-2px); }
 
+/* ===== ปุ่มเพลงบรรยากาศ (เฉพาะโหมดมืด) ===== */
+.sound-toggle {
+  position: fixed; bottom: 80px; right: 24px; z-index: 150;
+  width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,213,94,.5);
+  background: linear-gradient(135deg, #2a1a47, #12173f); color: #ffd45e; font-size: 1rem;
+  cursor: pointer; display: none; align-items: center; justify-content: center;
+  box-shadow: 0 0 16px rgba(255,213,94,.35);
+  transition: transform .2s ease, box-shadow .3s ease;
+}
+body.dark .sound-toggle { display: inline-flex; }
+.sound-toggle:hover { transform: translateY(-2px); box-shadow: 0 0 22px rgba(255,213,94,.55); }
+.sound-toggle.playing { animation: soundPulse 2s ease-in-out infinite; }
+@keyframes soundPulse { 0%,100% { box-shadow: 0 0 14px rgba(255,213,94,.3); } 50% { box-shadow: 0 0 24px rgba(255,213,94,.6); } }
+@media (prefers-reduced-motion: reduce) { .sound-toggle.playing { animation: none; } }
+
 /* ปุ่มสลับโหมดมืด */
 .theme-toggle {
   width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;

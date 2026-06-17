@@ -1205,6 +1205,36 @@ function applyTheme(t) {
   if (ic) ic.className = (t === 'dark') ? 'fas fa-sun' : 'fas fa-moon';
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) meta.setAttribute('content', t === 'dark' ? '#0a1118' : '#0f8b8b');
+  syncMusicToTheme();
+}
+
+// ── เพลงบรรยากาศ (เฉพาะโหมดมืด, ผู้ใช้กดเอง) ──
+function _spaceAudio() { return document.getElementById('spaceAudio'); }
+function updateSoundBtn() {
+  const a = _spaceAudio(), btn = document.getElementById('soundToggle');
+  if (!a || !btn) return;
+  const playing = !a.paused;
+  btn.classList.toggle('playing', playing);
+  const ic = btn.querySelector('i');
+  if (ic) ic.className = playing ? 'fas fa-volume-high' : 'fas fa-volume-xmark';
+}
+function toggleMusic() {
+  const a = _spaceAudio(); if (!a) return;
+  if (a.paused) {
+    a.volume = 0.3;
+    a.play().then(() => { localStorage.setItem('iqa-music', 'on'); updateSoundBtn(); }).catch(() => {});
+  } else {
+    a.pause(); localStorage.setItem('iqa-music', 'off'); updateSoundBtn();
+  }
+}
+function syncMusicToTheme() {
+  const a = _spaceAudio(); if (!a) return;
+  if (document.body.classList.contains('dark')) {
+    if (localStorage.getItem('iqa-music') === 'on') { a.volume = 0.3; a.play().catch(() => {}); }
+  } else {
+    a.pause();
+  }
+  updateSoundBtn();
 }
 function toggleTheme() {
   const t = document.body.classList.contains('dark') ? 'light' : 'dark';

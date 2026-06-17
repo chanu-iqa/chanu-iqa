@@ -32,7 +32,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="IQA ชานุมาน" />
   <link rel="apple-touch-icon" href="assets/logo.png" />
-  <link rel="stylesheet" href="style.css?v=76" />
+  <link rel="stylesheet" href="style.css?v=77" />
   <!-- Font Awesome โหลดแบบไม่บล็อกการแสดงผล -->
   <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></noscript>
@@ -479,6 +479,10 @@
 <!-- ปุ่มกลับขึ้นบน -->
 <button class="to-top" id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="กลับขึ้นบน"><i class="fas fa-arrow-up"></i></button>
 
+<!-- ===== เพลงบรรยากาศอวกาศ (เฉพาะโหมดมืด) ===== -->
+<audio id="spaceAudio" loop preload="none" src="assets/audio/space.mp3"></audio>
+<button class="sound-toggle" id="soundToggle" onclick="toggleMusic()" aria-label="เปิด/ปิดเสียงเพลง" title="เปิด/ปิดเสียงเพลง"><i class="fas fa-volume-high"></i></button>
+
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="footer-inner">
@@ -502,6 +506,6 @@
   </div>
 </footer>
 
-<script src="app.js?v=74"></script>
+<script src="app.js?v=77"></script>
 </body>
 </html>
