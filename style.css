@@ -1319,8 +1319,9 @@ a:focus-visible, button:focus-visible, .nav-link:focus-visible,
   text-shadow: 0 1px 10px rgba(0,0,0,.35);
   word-break: normal; line-break: loose; text-wrap: pretty;
 }
-.hero-tagline .tagline-text { display: flex; flex-direction: column; line-height: 1.5; }
+.hero-tagline .tagline-text { display: flex; flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: .1rem .5rem; line-height: 1.5; }
 .hero-tagline .tagline-text strong { font-weight: 800; }
+@media (max-width: 900px) { .hero-tagline .tagline-text { flex-direction: column; gap: 0; } }  /* มือถือ: แยก 2 บรรทัด */
 .hero-tagline i { font-size: .95rem; }
 @media (max-width: 600px){ .hero-tagline { font-size: .82rem; } }
 
