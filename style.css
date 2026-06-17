@@ -1302,19 +1302,21 @@ a:focus-visible, button:focus-visible, .nav-link:focus-visible,
 
 /* ===== กันข้อความ Hero ตก/ถูกตัด (โดยเฉพาะวรรณยุกต์ไทย) ===== */
 .hero-content { max-width: 860px; }
-.hero-content h2 { overflow-wrap: break-word; word-break: normal; padding-bottom: 2px; }
+.hero-content h2 { overflow-wrap: break-word; word-break: normal; line-break: loose; text-wrap: balance; padding-bottom: 2px; }
 .hero-content p {
-  overflow-wrap: break-word; line-height: 1.75; padding-bottom: 2px;
+  overflow-wrap: break-word; word-break: normal; line-break: loose; text-wrap: pretty;
+  line-height: 1.75; padding-bottom: 2px;
   text-shadow: 0 1px 12px rgba(0,0,0,.28);   /* อ่านชัดบนวิดีโอ */
 }
 .hero-has-video .hero-content h2 { text-shadow: 0 2px 16px rgba(0,0,0,.35); }
 
 /* ===== Hero tagline (SADAO Model) ===== */
 .hero-tagline {
-  display: inline-flex; align-items: center; gap: 8px;
+  display: flex; align-items: baseline; gap: 8px;
   margin: .3rem 0 1.5rem; font-size: .98rem; font-weight: 600;
   color: #ffe08a; opacity: 1 !important; letter-spacing: .01em;
   text-shadow: 0 1px 10px rgba(0,0,0,.35);
+  word-break: normal; line-break: loose; text-wrap: pretty;
 }
 .hero-tagline i { font-size: .95rem; }
 @media (max-width: 600px){ .hero-tagline { font-size: .82rem; } }
