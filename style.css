@@ -126,7 +126,7 @@ main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
 /* ===== บล็อค 3D (ลูกบาศก์) หมุนโชว์โลโก้ ===== */
 .hero-visual { perspective: 1000px; display: flex; align-items: center; justify-content: center; }
-@media (min-width: 901px) { .hero-visual { margin-right: 6rem; } }  /* ขยับโลโก้เข้าซ้ายให้สมดุล */
+@media (min-width: 901px) { .hero-visual { margin-right: 4rem; } }  /* ขยับโลโก้เข้าซ้ายให้สมดุล */
 .cube-stage {
   position: relative; width: 200px; height: 200px;
   display: flex; align-items: center; justify-content: center;
