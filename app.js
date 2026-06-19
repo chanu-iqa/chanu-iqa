@@ -75,7 +75,7 @@ const DATA = {
   ],
 
   documents: [
-    { id: 1, title: 'รายงานการประเมินตนเอง (SAR) ปีการศึกษา 2568', type: 'pdf', cat: 'sar', year: 2568, size: '20 MB', date: 'ปีการศึกษา 2568', file: 'assets/docs/sar2568.pdf' },
+    { id: 1, title: 'รายงานการประเมินตนเอง (SAR) ปีการศึกษา 2568', type: 'pdf', cat: 'sar', year: 2568, size: '6 MB', date: 'ปีการศึกษา 2568', file: 'assets/docs/sar2568.pdf' },
     { id: 2, title: 'รายงานการประเมินตนเอง (SAR) ปีการศึกษา 2567', type: 'pdf', cat: 'sar', year: 2567, size: '14 MB', date: 'ปีการศึกษา 2567', file: 'assets/docs/sar2567.pdf' },
     { id: 3, title: 'รายงานการประเมินตนเอง (SAR) ปีการศึกษา 2566', type: 'pdf', cat: 'sar', year: 2566, size: '4 MB', date: 'ปีการศึกษา 2566', file: 'assets/docs/sar2566.pdf' },
     { id: 4, title: 'คู่มือประกันคุณภาพภายในสถานศึกษา ปีการศึกษา 2568', type: 'pdf', cat: 'plan', year: 2568, size: '395 KB', date: 'ปีการศึกษา 2568', file: 'assets/docs/manual2568.pdf' },
