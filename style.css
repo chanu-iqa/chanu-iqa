@@ -178,6 +178,11 @@ main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 }
 
 /* ===== STATS BAR ===== */
+.stats-caption {
+  display: flex; align-items: center; gap: .4rem;
+  font-size: .85rem; color: var(--gray-600); margin: 0 0 .6rem .25rem;
+}
+.stats-caption i { color: var(--primary); font-size: .8rem; }
 .stats-bar {
   display: grid; grid-template-columns: repeat(4,1fr);
   background: var(--white); border-radius: 16px;
